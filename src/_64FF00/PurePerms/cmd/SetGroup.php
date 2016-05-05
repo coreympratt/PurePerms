@@ -60,7 +60,7 @@ class SetGroup extends Command implements PluginIdentifiableCommand
         if(count($args) < 2 || count($args) > 3)
         {
             $sender->sendMessage(TextFormat::GREEN . PurePerms::MAIN_PREFIX . ' ' . $this->plugin->getMessage("cmds.setgroup.usage"));
-            
+        
             return true;
         }
         
@@ -120,7 +120,7 @@ class SetGroup extends Command implements PluginIdentifiableCommand
         $this->plugin->getUserDataMgr()->setGroup($player, $group, $levelName);
         
         $sender->sendMessage(TextFormat::GREEN . PurePerms::MAIN_PREFIX . ' ' . $this->plugin->getMessage("cmds.setgroup.messages.setgroup_successfully", $player->getName()));
-        
+        $sender->getServer()->broadcastMessage(TextFormat::GRAY . "[" . $sender->getName() . ": set " . $player->getName() . "'s group to " . $group->getName() . "]");
         if($player instanceof Player)
         {
             if(!$this->plugin->getConfigValue("enable-multiworld-perms") || ($this->plugin->getConfigValue("enable-multiworld-perms") and $levelName === $player->getLevel()->getName()))
