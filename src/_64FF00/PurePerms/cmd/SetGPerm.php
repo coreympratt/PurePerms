@@ -91,6 +91,7 @@ class SetGPerm extends Command implements PluginIdentifiableCommand
         $group->setGroupPermission($permission, $levelName);
         
         $sender->sendMessage(TextFormat::GREEN . PurePerms::MAIN_PREFIX . ' ' . $this->plugin->getMessage("cmds.setgperm.messages.gperm_added_successfully", $permission));
+        $sender->getServer()->broadcastMessage(TextFormat::GRAY . "[" . $sender->getName() . ": has set group " . $group->getName() . " permission " . $permission . "]");
         
         return true;
     }
